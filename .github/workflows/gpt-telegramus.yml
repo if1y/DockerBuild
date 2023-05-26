@@ -1,4 +1,4 @@
-name: claude-bard-tgbot
+name: gpt-telegramus
 
 on:
   workflow_dispatch:
@@ -25,8 +25,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: https://github.com/ciuzaak/Claude-Telegram-Bot.git#main
+          context: https://github.com/F33RNI/GPT-Telegramus.git#master
           file: Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/claude-bard-tgbot:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/gpt-telegramus:latest
