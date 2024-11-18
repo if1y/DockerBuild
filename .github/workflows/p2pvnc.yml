@@ -1,4 +1,4 @@
-name: peer2profit
+name: p2pvnc (peer2profit in vnc)
 
 on:
   workflow_dispatch:
@@ -29,4 +29,4 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/peer2profit:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/p2pvnc:latest
