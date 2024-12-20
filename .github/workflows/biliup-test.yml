@@ -34,17 +34,13 @@ jobs:
       - name: Set tags
         id: set_tags
         run: |
-          # Get the workflow name
           WORKFLOW_NAME="${{ github.workflow }}"
-          # Convert comma-separated tags to an array
           IFS=',' read -r -a TAG_ARRAY <<< "${{ github.event.inputs.version_tags }}"
-          # Initialize TAGS as an empty string
           TAGS=""
-          # Iterate over TAG_ARRAY and append each tag to TAGS
           for TAG in "${TAG_ARRAY[@]}"; do
-            TAGS="$TAGS --tag ${{ secrets.DOCKERHUB_USERNAME }}/$WORKFLOW_NAME:$TAG"
+            TAGS="$TAGS,${{ secrets.DOCKERHUB_USERNAME }}/$WORKFLOW_NAME:$TAG"
           done
-          # Set TAGS as an environment variable
+          TAGS=${TAGS:1}
           echo "TAGS=$TAGS" >> $GITHUB_ENV
 
       - name: Build and Push
